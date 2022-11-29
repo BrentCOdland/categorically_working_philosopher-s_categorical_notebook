@@ -4,9 +4,16 @@
 \graphicspath{{images/}}
 \usepackage{csquotes}
 \MakeOuterQuote{"}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amsmath}
 \usepackage[authordate,backend=biber]{biblatex-chicago}
 \addbibresource{references.bib}
 \usepackage{hyperref}
+
+\newcommand{\catname}[1]{{\normalfont\textbf{#1}}}
+
+\newtheorem*{exercise}{Exercise}
 
 \title{{Categorically working philospher's categorical notebook}\\
 {\includegraphics[width=\textwidth]{dog.jpg}}}
@@ -21,6 +28,41 @@
 \section{Exercises and Solutions}
 
 The text we will be using is \autocite{simmons2011introduction}.
+
+\subsection{Chapter 1}
+
+\begin{exercise}Observe that sets and functions do form a category \catname{Set}.\end{exercise}
+
+\begin{proof}
+First we check that composition is associative. If $f: A \rightarrow B$ and $g: B \rightarrow A$ then define composition by $(g \circ f)(a) = g(f(a))$. Then 
+
+\begin{align*}
+((h \circ g ) \circ f)(a) 
+&= (h \circ g)(f(a)) \\
+&= h(g(f(a)) \\
+&= h((g \circ f)(a)) \\
+&= (h \circ (g \circ f))(a)
+\end{align*}
+
+Functions are closed under composition. Again take the functions $f: A \rightarrow B$ and $g: B \rightarrow A$. Consider the set of ordered pairs $\Gamma(g \circ f)$, the "graph" of $g \circ f$. If $(a, c_1)$ and $(a, c_2)$ are in the graph of $g \circ f$, then we have 
+
+\begin{align*}
+(g \circ f)(a) = g(f(a)) &= c_1 \\
+(g \circ f)(a) = g(f(a)) &= c_2
+\end{align*}
+
+But because $g$ is a function (by assumption), $c_1 = c_2$.
+
+Lastly, we check that there are appropriate identity maps. For each set $S$ take the function $id_S(s) = s$ for all $s \in S$. Then if $f: A \rightarrow B$, it follows as required that
+
+\begin{align*}
+(id_B \circ f)(a) &= id_B(f(a)) = f(a) \\
+(f \circ id_A)(a) &= f(id_A(a)) = f(a) 
+\end{align*}
+
+\end{proof}
+
+This proof is way more detailed than it needed to be, especially for an exercise that simply asked us to "observe" rather than "show." In most contexts (such as the other exercises in this chapter) these more trivial fine-grained details should be taken for granted.
 
 \section{Papers mentioned in discussion}
 
